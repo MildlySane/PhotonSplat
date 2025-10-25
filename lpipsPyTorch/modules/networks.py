@@ -8,7 +8,7 @@ from torchvision import models
 
 import sys
 sys.path.append('/content/PhotonSplat/lpipsPyTorch/modules')
-from utils_test import normalize_activation
+from utils_new import normalize_activation
 
 
 def get_network(net_type: str):
