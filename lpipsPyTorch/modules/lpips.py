@@ -5,7 +5,7 @@ import sys
 sys.path.append('/content/PhotonSplat/lpipsPyTorch/modules')
 
 from networks import get_network, LinLayers
-from utils_test import get_state_dict
+from utils_new import get_state_dict
 
 class LPIPS(nn.Module):
     r"""Creates a criterion that measures
