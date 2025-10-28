@@ -62,19 +62,19 @@ def render_set(model_path, name, iteration, views, gaussians, pipeline, backgrou
             # torchvision.utils.save_image(lambda_rendering, os.path.join(lambda_path, '{0:05d}'.format(idx) + ".png"))
         
         # evaluation
-        # rendering = torch.clamp(rendering, 0.0, 1.0)
-        # gt_image = torch.clamp(view.original_image, 0.0, 1.0)
-        # metric_psnr.append(psnr(rendering, gt_image).mean().double().item())
-        # rendering = rendering.permute(1,2,0)
-        # gt_image = gt_image.permute(1,2,0)
-        # metric_ssim.append(compute_img_metric(rendering, gt_image, 'ssim'))
-        # metric_lpips.append(compute_img_metric(rendering, gt_image, 'lpips').item())
+        rendering = torch.clamp(rendering, 0.0, 1.0)
+        gt_image = torch.clamp(view.original_image, 0.0, 1.0)
+        metric_psnr.append(psnr(rendering, gt_image).mean().double().item())
+        rendering = rendering.permute(1,2,0)
+        gt_image = gt_image.permute(1,2,0)
+        metric_ssim.append(compute_img_metric(rendering, gt_image, 'ssim'))
+        metric_lpips.append(compute_img_metric(rendering, gt_image, 'lpips').item())
     
-    # print(f"========={name} dataset=========")
-    # print("PSNR: ", sum(metric_psnr) / len(metric_psnr))
-    # print("SSIM: ", sum(metric_ssim) / len(metric_ssim))
-    # print("LPIPS: ", sum(metric_lpips) / len(metric_lpips))
-    # print(f"================================")
+    print(f"========={name} dataset=========")
+    print("PSNR: ", sum(metric_psnr) / len(metric_psnr))
+    print("SSIM: ", sum(metric_ssim) / len(metric_ssim))
+    print("LPIPS: ", sum(metric_lpips) / len(metric_lpips))
+    print(f"================================")
 
 def render_sets(dataset : ModelParams, iteration : int, pipeline : PipelineParams, skip_train : bool, skip_test : bool):
     with torch.no_grad():
